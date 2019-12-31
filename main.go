@@ -1,7 +1,5 @@
 package main
 
-import "fmt"
-
 type User struct {
 	name string
 	age  string
@@ -20,9 +18,8 @@ func Talk(u *User) {
 }
 
 func main() {
-	fmt.Println("新しいユーザーが喋ります")
 	u := NewUser()
-	fmt.Println("Talkが呼ばれる前" + u.name)
+	// fmt.Println("Talkが呼ばれる前" + u.name)
 	Talk(u)
-	fmt.Println("Talkが呼ばれたあと" + u.name)
+	// fmt.Println("Talkが呼ばれたあと" + u.name)
 }
