@@ -1,25 +1,10 @@
 package main
 
-type User struct {
-	name string
-	age  string
-}
-
-func NewUser() *User {
-	u := &User{
-		name: "masa",
-		age:  "21",
-	}
-	return u
-}
-
-func Talk(u *User) {
-	u.name = "take"
-}
+import "github.com/dmskdlghs213/go_authAPI/app/presentation"
 
 func main() {
-	u := NewUser()
-	// fmt.Println("Talkが呼ばれる前" + u.name)
-	Talk(u)
-	// fmt.Println("Talkが呼ばれたあと" + u.name)
+
+	e := presentation.Router()
+
+	e.Logger.Fatal(e.Start(":8080")) // listen and serve on :8080
 }

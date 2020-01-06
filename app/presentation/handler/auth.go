@@ -1,7 +1,11 @@
 package handler
 
-import "fmt"
+import (
+	"net/http"
 
-func Signup() {
-	fmt.Println("HELLO")
+	"github.com/labstack/echo"
+)
+
+func Signup(c echo.Context) error {
+	return c.JSON(http.StatusOK, "Signup")
 }
