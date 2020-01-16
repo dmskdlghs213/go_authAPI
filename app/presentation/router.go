@@ -14,6 +14,7 @@ func Router() *echo.Echo {
 		return c.String(http.StatusOK, "OK")
 	})
 
-	e.GET("/test", handler.Signup)
+	e.POST("/signup", handler.Signup)
+	e.GET("/test",handler.Test)
 	return e
 }
