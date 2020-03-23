@@ -1,0 +1,5 @@
+development:
+    dialect: mysql
+    datasource: auth_test_user:auth_test_user@/auth_test?parseTime=true
+    dir: db/migrations
+    table: migrations

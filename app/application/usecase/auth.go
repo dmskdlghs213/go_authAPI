@@ -7,27 +7,27 @@ import (
 	"github.com/dmskdlghs213/go_authAPI/app/infrastructure/persistance"
 )
 
-func CreateUser(name string, email string, encrypted_password string) error {
+func CreateStore(storeName string, storeEmail string, storePhoneNumber string) error {
 	authRepositoryAccessor := persistance.NewAuthRepository(infrastructure.DB)
 	authServiceAccessor := service.NewAuthService(authRepositoryAccessor)
 
-	user := authServiceAccessor.CreateUser(name, email, encrypted_password)
+	err := authServiceAccessor.CreateStore(storeName, storeEmail, storePhoneNumber)
 
-	if user != nil {
-		return user
+	if err != nil {
+		return err
 	}
 
-	return user
+	return err
 }
 
-func FindByAccount(name string, email string) (*model.User, error) {
+func FindByStore(storeName string, storeEmail string) (*model.StoreDetail, error) {
 	authRepositoryAccessor := persistance.NewAuthRepository(infrastructure.DB)
 	authServiceAccessor := service.NewAuthService(authRepositoryAccessor)
 
-	account, err := authServiceAccessor.FindByAccount(name, email)
+	store, err := authServiceAccessor.FindByStore(storeName, storeEmail)
 	if err != nil {
-		return account, err
+		return store, err
 	}
-	
-	return account, err
+
+	return store, err
 }

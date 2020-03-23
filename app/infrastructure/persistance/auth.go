@@ -1,6 +1,8 @@
 package persistance
 
 import (
+	"fmt"
+
 	"github.com/dmskdlghs213/go_authAPI/app/domain/model"
 	"github.com/jmoiron/sqlx"
 )
@@ -15,36 +17,37 @@ func NewAuthRepository(db *sqlx.DB) *AuthRepository {
 	}
 }
 
-func (ar *AuthRepository) Insert(name string, email string, encryptedPassword string) error {
+func (ar *AuthRepository) CreateStore(storeName string, storeEmail string, storePhoneNumber string) error {
 	ins := `
-		INSERT INTO users (name, email, encrypted_password) VALUES (:name, :email, :encrypted_password)
+		INSERT INTO store (store_name, store_email, store_phone_number, encrypted_password) VALUES (:store_name, :store_email, :store_phone_number,:encrypted_password)
 	`
-	var user model.User
 	_, err := ar.DB.NamedExec(
 		ins,
 		map[string]interface{}{
-			"name":               user.Name,
-			"email":              user.Email,
-			"encrypted_password": user.EncryptedPassword,
+			"store_name":         storeName,
+			"store_email":        storeEmail,
+			"store_phone_number": storePhoneNumber,
+			"encrypted_password": "",
 		},
 	)
 
 	if err != nil {
+		fmt.Println(err)
 		return err
 	}
 
 	return nil
 }
 
-func (ar *AuthRepository) FindByAccount(name string, email string) (*model.User, error) {
+func (ar *AuthRepository) FindByStore(storeName string, storeEmail string) (*model.StoreDetail, error) {
 	query := `
-		SELECT user_id,name, email FROM users WHERE name = ? AND email = ?
+		SELECT store_id,store_name, store_email,store_phone_number FROM store WHERE store_name = ? AND store_email = ?
 	`
-	var user model.User
-	err := ar.DB.Get(&user, query, name, email)
+	var store model.StoreDetail
+	err := ar.DB.Get(&store, query, storeName, storeEmail)
 	if err != nil {
 		return nil, err
 	}
 
-	return &user, nil
+	return &store, nil
 }

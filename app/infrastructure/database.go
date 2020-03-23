@@ -25,9 +25,9 @@ func init() {
 	var config Config
 
 	var configFilePath string
-	basePath := os.Getenv("CAREFREE_ART_PATH")
+	basePath := os.Getenv("AUTH_API_PATH")
 
-	env := os.Getenv("CAREFREE_ART_ENV")
+	env := os.Getenv("AUTH_API_ENV")
 	switch env {
 	case "production":
 		configFilePath = basePath + "config/config_prd.toml"

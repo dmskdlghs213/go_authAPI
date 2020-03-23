@@ -15,6 +15,7 @@ func Router() *echo.Echo {
 	})
 
 	e.POST("/signup", handler.Signup)
-	e.GET("/test",handler.Test)
+	e.GET("/account/self", handler.GetStoreDetail)
+	e.GET("/test", handler.Test)
 	return e
 }

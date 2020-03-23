@@ -15,21 +15,21 @@ func NewAuthService(ur repository.AuthAccessor) *AuthService {
 	}
 }
 
-func (as *AuthService) CreateUser(name string, email string, encrypted_password string) error {
+func (as *AuthService) CreateStore(storeName string, storeEmail string, storePhoneNumber string) error {
 
-	user := as.authAccessor.Insert(name, email, encrypted_password)
-	if user != nil {
-		return user
+	err := as.authAccessor.CreateStore(storeName, storeEmail, storePhoneNumber)
+	if err != nil {
+		return err
 	}
 
-	return user
+	return err
 }
 
-func (as *AuthService) FindByAccount(name string, email string) (*model.User, error) {
-	account, err := as.authAccessor.FindByAccount(name, email)
+func (as *AuthService) FindByStore(storeName string, storeEmail string) (*model.StoreDetail, error) {
+	store, err := as.authAccessor.FindByStore(storeName, storeEmail)
 	if err != nil {
 		return nil, err
 	}
 
-	return account, err
+	return store, err
 }
