@@ -4,11 +4,11 @@ import (
 	"github.com/dmskdlghs213/go_authAPI/app/domain/model"
 	"github.com/dmskdlghs213/go_authAPI/app/domain/service"
 	"github.com/dmskdlghs213/go_authAPI/app/infrastructure"
-	"github.com/dmskdlghs213/go_authAPI/app/infrastructure/persistance"
+	"github.com/dmskdlghs213/go_authAPI/app/infrastructure/persistence"
 )
 
 func CreateStore(storeName string, storeEmail string, storePhoneNumber string) error {
-	authRepositoryAccessor := persistance.NewAuthRepository(infrastructure.DB)
+	authRepositoryAccessor := persistence.NewAuthRepository(infrastructure.DB)
 	authServiceAccessor := service.NewAuthService(authRepositoryAccessor)
 
 	err := authServiceAccessor.CreateStore(storeName, storeEmail, storePhoneNumber)
@@ -21,7 +21,7 @@ func CreateStore(storeName string, storeEmail string, storePhoneNumber string) e
 }
 
 func FindByStore(storeName string, storeEmail string) (*model.StoreDetail, error) {
-	authRepositoryAccessor := persistance.NewAuthRepository(infrastructure.DB)
+	authRepositoryAccessor := persistence.NewAuthRepository(infrastructure.DB)
 	authServiceAccessor := service.NewAuthService(authRepositoryAccessor)
 
 	store, err := authServiceAccessor.FindByStore(storeName, storeEmail)
