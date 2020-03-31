@@ -4,4 +4,4 @@ main.go
 
 dbconfig.yml
 
-sendgrid.env
+/env
