@@ -1,7 +1,5 @@
-main.go
+main
 
 /config
-
-dbconfig.yml
 
 /env
