@@ -1,3 +1,7 @@
-main
-config/
-dbconfig.ymlsendgrid.env
+main.go
+
+/config
+
+dbconfig.yml
+
+sendgrid.env
