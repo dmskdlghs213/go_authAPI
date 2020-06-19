@@ -13,7 +13,7 @@ func Router() *echo.Echo {
 	e.GET("/", func(c echo.Context) error {
 		return c.String(http.StatusOK, "OK")
 	})
-	// e.GET("/test", handler.Test)
+	
 	e.POST("/signup", handler.Signup)
 	e.GET("/account/self", handler.GetStoreDetail)
 
