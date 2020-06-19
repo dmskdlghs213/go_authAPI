@@ -41,7 +41,6 @@ func init() {
 	if err != nil {
 		panic(err.Error())
 	}
-
 	dbConfig := config.MySQL.Username + ":" + config.MySQL.Password + "@tcp(" + config.MySQL.Host + ":3306)/" + config.MySQL.Database + "?parseTime=true"
 
 	db, err := sqlx.Connect("mysql", dbConfig)
